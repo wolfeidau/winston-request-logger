@@ -2,6 +2,8 @@
 
 Winston http request logger for express which is loosely based on [express-request-logger](https://github.com/mathrawka/express-request-logger).
 
+[![Build Status](https://secure.travis-ci.org/wolfeidau/winston-request-logger.png)](http://travis-ci.org/wolfeidau/winston-request-logger)
+
 ## Getting Started
 In an existing express project you can add the following configuration fragment to enable request logging to console,
 with colors while in development or test.
