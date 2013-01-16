@@ -1,0 +1,41 @@
+{
+    "name": "winston-request-logger",
+    "description": "Winston based http request logger for express.",
+    "version": "0.1.0",
+    "homepage": "https://github.com/wolfeidau/winston-request-logger",
+    "author": {
+        "name": "Mark Wolfe",
+        "email": "mark@wolfe.id.au",
+        "url": "http://www.wolfe.id.au/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/wolfeidau/winston-request-logger.git"
+    },
+    "bugs": {
+        "url": "https://github.com/wolfeidau/winston-request-logger/issues"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/wolfeidau/winston-request-logger/blob/master/LICENSE-MIT"
+        }
+    ],
+    "main": "lib/winston-request-logger",
+    "engines": {
+        "node": ">= 0.6.0"
+    },
+    "scripts": {
+        "test": "grunt test"
+    },
+    "dependencies": {
+        "winston": "*"
+    },
+    "devDependencies": {
+        "grunt-simple-mocha": "~0.2.0",
+        "mocha": "~1.6.0",
+        "should": "~1.2.0",
+        "grunt": "~0.3.17"
+    },
+    "keywords": ["express","request","winston","logger"]
+}
