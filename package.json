@@ -29,8 +29,8 @@
         "test": "grunt test"
     },
     "dependencies": {
-        "winston": "*"
-          , "colors": "*"
+        "winston": "*",
+        "colors": "*"
     },
     "devDependencies": {
         "grunt-simple-mocha": "~0.2.0",
@@ -38,5 +38,5 @@
         "should": "~1.2.0",
         "grunt": "~0.3.17"
     },
-    "keywords": ["express","request","winston","logger"]
+    "keywords": ["express", "request", "winston", "logger"]
 }
