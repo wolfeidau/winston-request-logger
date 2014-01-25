@@ -69,5 +69,28 @@ describe('winston-request-logger', function () {
                 if (err) { done(err); }
               });
        });
+
+        it('should log request with message property', function (done) {
+
+            // Bootstrap our environment
+            var logger = new (winston.Logger)();
+            var app = createServer(logger, {
+                message: ':method :url[pathname] :response_time'
+            });
+
+            // Winston emits a `logged` event, so we will listen for when our
+            // middleware actual logs the event so we can test it.
+            logger.once('logged', function (level, message, data) {
+                message.length.should.be.greaterThan(0);
+                done();
+            });
+
+            // Make our dummy request.
+            request(app)
+              .get(__filename.replace(__dirname, ''))
+              .end(function (err, res) {
+                if (err) { done(err); }
+              });
+       });
     });
 });
