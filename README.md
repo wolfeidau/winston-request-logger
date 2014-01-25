@@ -16,6 +16,24 @@ with colors while in development or test.
     });
 ```
 
+## Custom formats
+You can optionally specify a second argument to `create(logger, [format])` to customize the object sent to Winston:
+
+```javascript
+	app.use(require('winston-request-logger').create(logger, {
+		'responseTime': ':responseTime ms',		// outputs '5 ms'
+		'url': ':url[pathname]'					// outputs '/some/path'
+	}));
+```
+
+### Format tokens:
+* `:date` - Timestamp of the request.
+* `:statusCode` - HTTP status code of the request.
+* `:method` - HTTP method (GET, POST, etc.)
+* `:url[segment]` - Segment of the URL requested (Refer to the [url module](http://nodejs.org/api/url.html) for options).
+* `:responseTime` - Time it took for the response (in milliseconds).
+
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/gruntjs/grunt).
 
