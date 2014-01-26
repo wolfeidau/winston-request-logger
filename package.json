@@ -1,7 +1,7 @@
 {
   "name": "winston-request-logger",
   "description": "Winston based http request logger for express.",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/wolfeidau/winston-request-logger",
   "author": {
     "name": "Mark Wolfe",
