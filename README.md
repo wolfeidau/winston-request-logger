@@ -35,8 +35,15 @@ You can optionally specify a second argument to `create(logger, [format])` to cu
 * `:ip` - The client's IP address (looks to `X-forwarded-for` header first).
 
 
-## Contributing
+## Contributors
+<table><tbody>
+<tr><th align="left">Mark Wolfe</th><td><a href="https://github.com/wolfeidau">GitHub/wolfeidau</a></td><td><a href="http://twitter.com/wolfeidau">Twitter/@wolfeidau</a></td></tr>
+<tr><th align="left">Evan Dudla</th><td><a href="https://github.com/evNN">GitHub/evNN</a></td><td><a href="http://twitter.com/evandudla">Twitter/@evandudla</a></td></tr>
+</tbody></table>
+
+### Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/gruntjs/grunt).
+
 
 ## License
 Copyright (c) 2013 Mark Wolfe  
