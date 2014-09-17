@@ -36,6 +36,7 @@ describe('winston-request-logger', function () {
                 data.should.have.property('method');
                 data.should.have.property('url');
                 data.should.have.property('response_time');
+                data.should.have.property('user_agent');
                 done();
             });
 
