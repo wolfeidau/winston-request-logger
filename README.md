@@ -33,6 +33,7 @@ You can optionally specify a second argument to `create(logger, [format])` to cu
 * `:url[segment]` - Segment of the URL requested (Refer to the [url module](http://nodejs.org/api/url.html) for options).
 * `:responseTime` - Time it took for the response (in milliseconds).
 * `:ip` - The client's IP address (looks to `X-forwarded-for` header first).
+* `:userAgent` - The client's browser agent (parsed with [`useragent`](https://github.com/3rd-Eden/useragent).
 
 
 ## Contributors
