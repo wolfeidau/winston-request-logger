@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "colors": "*",
-    "useragent": "^2.0.9",
+    "useragent": "*",
     "winston": "*"
   },
   "devDependencies": {
