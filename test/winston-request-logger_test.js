@@ -19,18 +19,30 @@ var createServer = function (logger, options) {
     return app;
 };
 
+var createLogger = function () {
+    var logger = new (winston.Logger)({
+        transports: [
+            new (winston.transports.Console)({
+                silent: true
+            })
+        ]
+    });
+
+    return logger;
+};
+
 // And on to the tests!
 describe('winston-request-logger', function () {
     describe('logger', function () {
         it('should log request with default data', function (done) {
 
             // Bootstrap our environment
-            var logger = new (winston.Logger)();
+            var logger = createLogger();
             var app = createServer(logger);
 
-            // Winston emits a `logged` event, so we will listen for when our
+            // Winston emits a `logging` event, so we will listen for when our
             // middleware actual logs the event so we can test it.
-            logger.once('logged', function (level, message, data) {
+            logger.once('logging', function (transport, level, message, data) {
                 data.should.have.property('date');
                 data.should.have.property('status');
                 data.should.have.property('method');
@@ -51,14 +63,14 @@ describe('winston-request-logger', function () {
         it('should log request with custom data', function (done) {
 
             // Bootstrap our environment
-            var logger = new (winston.Logger)();
+            var logger = createLogger();
             var app = createServer(logger, {
                 customKey: ':method :url[pathname]'
             });
 
-            // Winston emits a `logged` event, so we will listen for when our
+            // Winston emits a `logging` event, so we will listen for when our
             // middleware actual logs the event so we can test it.
-            logger.once('logged', function (level, message, data) {
+            logger.once('logging', function (transport, level, message, data) {
                 data.should.have.property('customKey');
                 done();
             });
@@ -69,19 +81,19 @@ describe('winston-request-logger', function () {
               .end(function (err, res) {
                 if (err) { done(err); }
               });
-       });
+        });
 
         it('should log request with message property', function (done) {
 
             // Bootstrap our environment
-            var logger = new (winston.Logger)();
+            var logger = createLogger();
             var app = createServer(logger, {
                 message: ':method :url[pathname] :response_time'
             });
 
-            // Winston emits a `logged` event, so we will listen for when our
+            // Winston emits a `logging` event, so we will listen for when our
             // middleware actual logs the event so we can test it.
-            logger.once('logged', function (level, message, data) {
+            logger.once('logging', function (transport, level, message, data) {
                 message.length.should.be.greaterThan(0);
                 done();
             });
@@ -92,6 +104,27 @@ describe('winston-request-logger', function () {
               .end(function (err, res) {
                 if (err) { done(err); }
               });
-       });
+        });
+
+        it('should log requests to a custom level if provided', function (done) {
+
+            // Bootstrap our environment
+            var logger = createLogger();
+            var app = createServer(logger, {
+                level: 'error'
+            });
+
+            logger.once('logging', function (transport, level, message, data) {
+                level.should.equal('error');
+                data.should.not.have.property('level');
+                done();
+            });
+
+            request(app)
+              .get(__filename.replace(__dirname, ''))
+              .end(function (err, res) {
+                if (err) { done(err); }
+              });
+        });
     });
 });
